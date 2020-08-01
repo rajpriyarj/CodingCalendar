@@ -17,14 +17,14 @@ async function getListOfContests() {
             res.data.forEach(ele => {
                 let s = new Date(ele.start);
                 let e = new Date(ele.end);
-                if (moment(s).isBefore(t) && moment(e).isBefore(t)) {
+                if (moment(e).isBefore(t)) {
                     console.log(ele);
                 }
 
             });
             break;
         case "running":
-            console.log(`########---PRESENT EVENTS---########`);
+            console.log(`########---RUNNING EVENTS---########`);
             res.data.forEach(ele => {
                 let s = new Date(ele.start);
                 let e = new Date(ele.end);
@@ -34,13 +34,12 @@ async function getListOfContests() {
 
             });
             break;
-        case "future":
-            console.log(`########---FUTURE EVENTS---########`);
+        case "upcoming":
+            console.log(`########---UPCOMING EVENTS---########`);
             res.data.forEach(ele => {
                 let s = new Date(ele.start);
                 let e = new Date(ele.end);
-                if (moment(s).isAfter(t) && moment(e).isAfter(t)) {
-
+                if (moment(s).isAfter(t)) {
                     console.log(ele);
                 }
             });
